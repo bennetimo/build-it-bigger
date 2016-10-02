@@ -1,15 +1,17 @@
 package io.coderunner.jokes;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import io.coderunner.jokes.lib.JokeActivity;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements EndpointsAsyncTask.OnTaskCompleted {
 
     private Joker mJoker = new Joker();
 
@@ -43,8 +45,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view) {
-        Intent intent = new Intent(this, JokeActivity.class).putExtra(Intent.EXTRA_TEXT, mJoker.getJoke());
-        startActivity(intent);
+        new EndpointsAsyncTask(this).execute(new Pair<Context, String>(this, ""));
     }
 
+    @Override
+    public void onTaskCompleted(String result) {
+        Intent intent = new Intent(this, JokeActivity.class).putExtra(Intent.EXTRA_TEXT, result);
+        startActivity(intent);
+    }
 }
