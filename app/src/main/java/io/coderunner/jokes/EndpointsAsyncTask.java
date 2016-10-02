@@ -1,8 +1,6 @@
 package io.coderunner.jokes;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Pair;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -13,9 +11,8 @@ import java.io.IOException;
 
 import io.coderunner.jokes.backend.myApi.MyApi;
 
-class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+class EndpointsAsyncTask extends AsyncTask<String, Void, String> {
     private static MyApi jokeService = null;
-    private Context context;
     private OnTaskCompleted mListener;
 
     public EndpointsAsyncTask(OnTaskCompleted mListener) {
@@ -27,7 +24,7 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
     }
 
     @Override
-    protected String doInBackground(Pair<Context, String>... params) {
+    protected String doInBackground(String... params) {
         if(jokeService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -45,8 +42,6 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
 
             jokeService = builder.build();
         }
-
-        context = params[0].first;
 
         try {
             return jokeService.getJoke().execute().getData();
