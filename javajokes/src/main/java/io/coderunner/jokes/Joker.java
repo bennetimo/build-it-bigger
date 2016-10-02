@@ -1,4 +1,4 @@
-package com.example;
+package io.coderunner.jokes;
 
 import java.util.Random;
 

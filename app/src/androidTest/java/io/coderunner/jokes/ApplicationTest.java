@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package io.coderunner.jokes;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
