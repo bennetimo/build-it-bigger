@@ -1,10 +1,9 @@
-package io.coderunner.jokes;
+package io.coderunner.jokes.lib;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-
 
 public class JokeActivity extends AppCompatActivity {
 

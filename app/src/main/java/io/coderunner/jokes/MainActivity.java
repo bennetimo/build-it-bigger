@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.udacity.gradle.builditbigger.R;
+import io.coderunner.jokes.lib.JokeActivity;
 
 public class MainActivity extends ActionBarActivity {
 

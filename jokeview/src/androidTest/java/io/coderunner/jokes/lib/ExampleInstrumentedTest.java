@@ -1,4 +1,4 @@
-package io.coderunner.jokes;
+package io.coderunner.jokes.lib;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
